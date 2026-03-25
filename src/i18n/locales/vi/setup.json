@@ -1,0 +1,152 @@
+{
+    "steps": {
+        "welcome": {
+            "title": "Chào mừng đến với ClawX",
+            "description": "Trợ lý AI của bạn đã sẵn sàng để cấu hình"
+        },
+        "runtime": {
+            "title": "Kiểm tra môi trường",
+            "description": "Xác minh yêu cầu hệ thống"
+        },
+        "provider": {
+            "title": "Nhà cung cấp AI",
+            "description": "Cấu hình dịch vụ AI của bạn"
+        },
+        "channel": {
+            "title": "Kết nối kênh",
+            "description": "Kết nối nền tảng nhắn tin (tùy chọn)"
+        },
+        "installing": {
+            "title": "Đang thiết lập",
+            "description": "Cài đặt các thành phần cần thiết"
+        },
+        "complete": {
+            "title": "Hoàn tất!",
+            "description": "ClawX đã sẵn sàng sử dụng"
+        }
+    },
+    "welcome": {
+        "title": "Chào mừng đến với ClawX",
+        "description": "ClawX là giao diện đồ họa cho OpenClaw, giúp bạn dễ dàng sử dụng trợ lý AI trên các nền tảng nhắn tin yêu thích.",
+        "features": {
+            "noCommand": "Không cần dòng lệnh",
+            "modernUI": "Giao diện hiện đại, đẹp mắt",
+            "bundles": "Gói kỹ năng được cài sẵn",
+            "crossPlatform": "Hỗ trợ đa nền tảng"
+        }
+    },
+    "runtime": {
+        "title": "Đang kiểm tra môi trường",
+        "viewLogs": "Xem log",
+        "recheck": "Kiểm tra lại",
+        "nodejs": "Runtime Node.js",
+        "openclaw": "Gói OpenClaw",
+        "gateway": "Dịch vụ Gateway",
+        "startGateway": "Khởi động Gateway",
+        "status": {
+            "checking": "Đang kiểm tra...",
+            "success": "Node.js đã sẵn sàng",
+            "error": "Thất bại",
+            "gatewayRunning": "Đang chạy trên cổng {{port}}",
+            "packageReady": "Gói OpenClaw đã sẵn sàng"
+        },
+        "issue": {
+            "title": "Phát hiện sự cố môi trường",
+            "desc": "Vui lòng đảm bảo OpenClaw được cài đặt đúng cách. Kiểm tra log để biết chi tiết."
+        },
+        "logs": {
+            "title": "Log ứng dụng",
+            "openFolder": "Mở thư mục log",
+            "close": "Đóng",
+            "noLogs": "(Chưa có log nào)"
+        }
+    },
+    "provider": {
+        "label": "Nhà cung cấp mô hình",
+        "selectPlaceholder": "Chọn nhà cung cấp...",
+        "baseUrl": "URL cơ sở",
+        "modelId": "ID mô hình",
+        "modelIdDesc": "Định danh mô hình từ nhà cung cấp của bạn (ví dụ: deepseek-ai/DeepSeek-V3)",
+        "codePlanPreset": "Mẫu Code Plan",
+        "codePlanMode": "Code Plan",
+        "useCodePlanPreset": "Dùng mẫu Ark Code Plan",
+        "codePlanPresetDesc": "Code Plan dùng https://ark.cn-beijing.volces.com/api/coding/v3 và mô hình ark-code-latest. Không dùng /api/v3 cho lưu lượng Code Plan.",
+        "codePlanDoc": "Tài liệu Code Plan",
+        "protocol": "Giao thức",
+        "protocols": {
+            "openaiCompletions": "OpenAI Completions",
+            "openaiResponses": "OpenAI Responses",
+            "anthropic": "Tương thích Anthropic"
+        },
+        "apiKey": "API Key",
+        "save": "Lưu",
+        "validateSave": "Xác thực & Lưu",
+        "valid": "Đã cấu hình nhà cung cấp thành công",
+        "invalid": "API key không hợp lệ",
+        "storedLocally": "API key được lưu cục bộ trên máy của bạn."
+    },
+    "channel": {
+        "title": "Kết nối kênh nhắn tin",
+        "subtitle": "Chọn nền tảng để kết nối trợ lý AI. Bạn có thể thêm kênh khác sau trong Cài đặt.",
+        "configure": "Cấu hình {{name}}",
+        "howTo": "Cách kết nối:",
+        "viewDocs": "Xem tài liệu",
+        "validationError": "Xác thực thất bại",
+        "connected": "{{name}} đã kết nối",
+        "connectedDesc": "Kênh đã được cấu hình. Nó sẽ kết nối khi Gateway khởi động.",
+        "configureAnother": "Cấu hình kênh khác"
+    },
+    "installing": {
+        "title": "Đang cài đặt các thành phần thiết yếu",
+        "subtitle": "Thiết lập các công cụ cần thiết để vận hành trợ lý AI của bạn",
+        "progress": "Tiến trình",
+        "status": {
+            "pending": "Chờ",
+            "installing": "Đang cài đặt...",
+            "installed": "Đã cài đặt",
+            "failed": "Thất bại"
+        },
+        "error": "Lỗi thiết lập:",
+        "restart": "Thử khởi động lại ứng dụng",
+        "wait": "Quá trình này có thể mất một lúc...",
+        "skip": "Bỏ qua bước này"
+    },
+    "complete": {
+        "title": "Thiết lập hoàn tất!",
+        "subtitle": "ClawX đã được cấu hình và sẵn sàng sử dụng. Bạn có thể bắt đầu chat với trợ lý AI.",
+        "provider": "Nhà cung cấp AI",
+        "components": "Thành phần",
+        "gateway": "Gateway",
+        "running": "Đang chạy",
+        "footer": "Bạn có thể tùy chỉnh kỹ năng và kết nối kênh trong Cài đặt"
+    },
+    "nav": {
+        "next": "Tiếp theo",
+        "back": "Quay lại",
+        "skipStep": "Bỏ qua bước này",
+        "skipSetup": "Bỏ qua thiết lập",
+        "getStarted": "Bắt đầu"
+    },
+    "defaultSkills": {
+        "opencode": {
+            "name": "OpenCode",
+            "description": "Backend trợ lý lập trình AI"
+        },
+        "python-env": {
+            "name": "Môi trường Python",
+            "description": "Runtime Python cho kỹ năng"
+        },
+        "code-assist": {
+            "name": "Hỗ trợ lập trình",
+            "description": "Phân tích và gợi ý code"
+        },
+        "file-tools": {
+            "name": "Công cụ file",
+            "description": "Thao tác và quản lý file"
+        },
+        "terminal": {
+            "name": "Terminal",
+            "description": "Thực thi lệnh shell"
+        }
+    }
+}

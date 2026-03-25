@@ -1,0 +1,41 @@
+{
+    "gatewayNotRunning": "Gateway chưa chạy",
+    "gatewayRequired": "OpenClaw Gateway cần chạy để sử dụng chat. Nó sẽ tự động khởi động, hoặc bạn có thể khởi động từ Cài đặt.",
+    "welcome": {
+        "title": "ClawX Chat",
+        "subtitle": "Tôi có thể giúp gì cho bạn?",
+        "askQuestions": "Xử lý tác vụ",
+        "askQuestionsDesc": "Thực hiện các yêu cầu theo nhiệm vụ",
+        "creativeTasks": "Thực thi liên tục",
+        "creativeTasksDesc": "Tiếp tục thực hiện công việc nhiều bước",
+        "brainstorming": "Đa Agent song song"
+    },
+    "noLogs": "(Chưa có log nào)",
+    "toolbar": {
+        "refresh": "Làm mới chat",
+        "showThinking": "Hiện suy nghĩ",
+        "hideThinking": "Ẩn suy nghĩ",
+        "currentAgent": "Đang nói chuyện với {{agent}}"
+    },
+    "composer": {
+        "attachFiles": "Đính kèm file",
+        "pickAgent": "Chọn agent",
+        "clearTarget": "Xóa agent mục tiêu",
+        "targetChip": "@{{agent}}",
+        "agentPickerTitle": "Chuyển tin nhắn tiếp theo đến agent khác",
+        "gatewayDisconnectedPlaceholder": "Gateway chưa kết nối...",
+        "send": "Gửi",
+        "stop": "Dừng",
+        "gatewayConnected": "đã kết nối",
+        "gatewayStatus": "gateway {{state}} | cổng: {{port}} {{pid}}",
+        "retryFailedAttachments": "Thử lại đính kèm lỗi"
+    },
+    "historyBuckets": {
+        "today": "Hôm nay",
+        "yesterday": "Hôm qua",
+        "withinWeek": "Trong 1 tuần",
+        "withinTwoWeeks": "Trong 2 tuần",
+        "withinMonth": "Trong 1 tháng",
+        "older": "Hơn 1 tháng trước"
+    }
+}
