@@ -386,6 +386,30 @@
                 "获取 App ID 和 Client Secret",
                 "在下方填写凭证信息"
             ]
+        },
+        "zalo": {
+            "description": "通过 OA 访问令牌连接 Zalo 官方账号（OA）机器人",
+            "docsUrl": "https://docs.openclaw.ai/channels/zalo",
+            "fields": {
+                "accessToken": {
+                    "label": "OA 访问令牌",
+                    "placeholder": "您的 Zalo OA 访问令牌"
+                }
+            },
+            "instructions": [
+                "前往 Zalo 官方账号管理平台创建 OA（如尚未创建）",
+                "进入设置 → API，生成访问令牌",
+                "将访问令牌粘贴到下方以连接 Zalo OA"
+            ]
+        },
+        "zalouser": {
+            "description": "通过扫描二维码连接个人 Zalo 账号",
+            "docsUrl": "https://docs.openclaw.ai/channels/zalouser",
+            "instructions": [
+                "点击「生成二维码」启动登录流程",
+                "在手机上打开 Zalo 并扫描二维码",
+                "在手机上确认后，账号将自动完成关联"
+            ]
         }
     },
     "viewDocs": "查看文档"

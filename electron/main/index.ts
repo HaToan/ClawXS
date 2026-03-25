@@ -42,6 +42,7 @@ import { HostEventBus } from '../api/event-bus';
 import { deviceOAuthManager } from '../utils/device-oauth';
 import { browserOAuthManager } from '../utils/browser-oauth';
 import { whatsAppLoginManager } from '../utils/whatsapp-login';
+import { zaloUserLoginManager } from '../utils/zalouser-login';
 import { syncAllProviderAuthToRuntime } from '../services/providers/provider-runtime-sync';
 
 const WINDOWS_APP_USER_MODEL_ID = 'app.clawx.desktop';
@@ -411,6 +412,18 @@ async function initialize(): Promise<void> {
 
   whatsAppLoginManager.on('error', (error) => {
     hostEventBus.emit('channel:whatsapp-error', error);
+  });
+
+  zaloUserLoginManager.on('qr', (data) => {
+    hostEventBus.emit('channel:zalouser-qr', data);
+  });
+
+  zaloUserLoginManager.on('success', (data) => {
+    hostEventBus.emit('channel:zalouser-success', data);
+  });
+
+  zaloUserLoginManager.on('error', (error) => {
+    hostEventBus.emit('channel:zalouser-error', error);
   });
 
   // Start Gateway automatically (this seeds missing bootstrap files with full templates)

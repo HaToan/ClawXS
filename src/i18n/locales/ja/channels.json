@@ -385,6 +385,30 @@
                 "認証情報を入力します"
             ],
             "docsUrl": "https://icnnp7d0dymg.feishu.cn/wiki/KPIJwlyiGiupMrkiS9ice39Zn2c"
+        },
+        "zalo": {
+            "description": "OA アクセストークンを使って Zalo 公式アカウント（OA）ボットに接続します",
+            "docsUrl": "https://docs.openclaw.ai/channels/zalo",
+            "fields": {
+                "accessToken": {
+                    "label": "OA アクセストークン",
+                    "placeholder": "Zalo OA のアクセストークン"
+                }
+            },
+            "instructions": [
+                "Zalo 公式アカウント管理ページで OA を作成します（未作成の場合）",
+                "設定 → API に移動してアクセストークンを生成します",
+                "アクセストークンを貼り付けて Zalo OA を接続します"
+            ]
+        },
+        "zalouser": {
+            "description": "QR コードをスキャンして個人 Zalo アカウントに接続します",
+            "docsUrl": "https://docs.openclaw.ai/channels/zalouser",
+            "instructions": [
+                "「QR コードを生成」をクリックしてログインフローを開始します",
+                "スマートフォンで Zalo を開き、QR コードをスキャンします",
+                "スマートフォンで確認すると、アカウントが自動的に連携されます"
+            ]
         }
     },
     "viewDocs": "ドキュメントを表示"

@@ -52,6 +52,7 @@ const CHANNEL_UNIQUE_CREDENTIAL_KEY: Record<string, string> = {
     msteams: 'appId',
     googlechat: 'serviceAccountKey',
     mattermost: 'botToken',
+    zalo: 'accessToken',
 };
 
 // ── Helpers ──────────────────────────────────────────────────────
@@ -390,6 +391,35 @@ async function ensurePluginAllowlist(currentConfig: OpenClawConfig, channelType:
             currentConfig.plugins.entries[WECHAT_PLUGIN_ID] = {};
         }
         currentConfig.plugins.entries[WECHAT_PLUGIN_ID].enabled = true;
+    }
+
+    if (channelType === 'zalo' || channelType === 'zalouser') {
+        if (!currentConfig.plugins) {
+            currentConfig.plugins = {
+                allow: [channelType],
+                enabled: true,
+                entries: {
+                    [channelType]: { enabled: true },
+                },
+            };
+            return;
+        }
+
+        currentConfig.plugins.enabled = true;
+        const allow = Array.isArray(currentConfig.plugins.allow)
+            ? currentConfig.plugins.allow as string[]
+            : [];
+        if (!allow.includes(channelType)) {
+            currentConfig.plugins.allow = [...allow, channelType];
+        }
+
+        if (!currentConfig.plugins.entries) {
+            currentConfig.plugins.entries = {};
+        }
+        if (!currentConfig.plugins.entries[channelType]) {
+            currentConfig.plugins.entries[channelType] = {};
+        }
+        currentConfig.plugins.entries[channelType].enabled = true;
     }
 }
 

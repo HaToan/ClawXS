@@ -115,7 +115,7 @@ sequenceDiagram
     alt User Cancel
         User->>Modal: click Cancel
         Modal->>HA: POST /api/channels/zalouser/cancel
-        Route->>ZLM: zaloUserLoginManager.stop()
+        Route->>ZLM: zaloUserLoginManager.logoutZalo()
         ZLM->>ZLM: abortFn() if not loginCompleted
         Modal->>HE: unsubscribe all listeners
     end

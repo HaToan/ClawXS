@@ -385,6 +385,30 @@
                 "Get App ID and Client Secret",
                 "Fill in your credentials below"
             ]
+        },
+        "zalo": {
+            "description": "Connect Zalo Official Account (OA) bot using an OA Access Token",
+            "docsUrl": "https://docs.openclaw.ai/channels/zalo",
+            "fields": {
+                "accessToken": {
+                    "label": "OA Access Token",
+                    "placeholder": "Your Zalo OA access token"
+                }
+            },
+            "instructions": [
+                "Go to Zalo Official Account Management and create an OA if you don't have one",
+                "Navigate to Settings → API and generate an Access Token",
+                "Paste the Access Token below to connect your Zalo OA to OpenClaw"
+            ]
+        },
+        "zalouser": {
+            "description": "Connect a personal Zalo account by scanning a QR code",
+            "docsUrl": "https://docs.openclaw.ai/channels/zalouser",
+            "instructions": [
+                "Click Generate QR Code to start the login flow",
+                "Open Zalo on your phone and scan the QR code",
+                "After confirming on your phone, the account will be linked automatically"
+            ]
         }
     },
     "viewDocs": "View Documentation"

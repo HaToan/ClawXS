@@ -43,6 +43,8 @@ import dingtalkIcon from '@/assets/channels/dingtalk.svg';
 import feishuIcon from '@/assets/channels/feishu.svg';
 import wecomIcon from '@/assets/channels/wecom.svg';
 import qqIcon from '@/assets/channels/qq.svg';
+import zaloIcon from '@/assets/channels/zalo.svg';
+import zaloUserIcon from '@/assets/channels/zalouser.svg';
 
 interface ChannelConfigModalProps {
   initialSelectedType?: ChannelType | null;
@@ -782,6 +784,10 @@ function ChannelLogo({ type }: { type: ChannelType }) {
       return <img src={whatsappIcon} alt="WhatsApp" className="w-[22px] h-[22px] dark:invert" />;
     case 'wechat':
       return <img src={wechatIcon} alt="WeChat" className="w-[22px] h-[22px] dark:invert" />;
+    case 'zalo':
+      return <img src={zaloIcon} alt="Zalo" className="w-[22px] h-[22px]" />;
+    case 'zalouser':
+      return <img src={zaloUserIcon} alt="Zalo Personal" className="w-[22px] h-[22px]" />;
     case 'dingtalk':
       return <img src={dingtalkIcon} alt="DingTalk" className="w-[22px] h-[22px] dark:invert" />;
     case 'feishu':

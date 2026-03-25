@@ -1,7 +1,17 @@
 {
   "permissions": {
     "allow": [
-      "Bash(wc -l /d/AI/ClawXS/src/i18n/locales/en/*.json)"
+      "Bash(wc -l /d/AI/ClawXS/src/i18n/locales/en/*.json)",
+      "Bash(find d:/AI/ClawXS -name *zalo* -o -name *Zalo*)",
+      "Bash(bash -c \"git show ''channel/zalo:.claude/settings.json''\")",
+      "Bash(git ls-tree:*)",
+      "Bash(grep -E \"^100644.*\\\\.\\(json|md|ts|tsx\\)$\")",
+      "Bash(npx tsc:*)",
+      "Bash(python -m json.tool src/i18n/locales/en/channels.json)",
+      "Bash(python -m json.tool src/i18n/locales/zh/channels.json)",
+      "Bash(python -m json.tool src/i18n/locales/ja/channels.json)",
+      "Bash(python -m json.tool src/i18n/locales/vi/channels.json)",
+      "Bash(pnpm tsc:*)"
     ]
   }
 }

@@ -18,6 +18,9 @@ const HOST_EVENT_TO_IPC_CHANNEL: Record<string, string> = {
   'channel:wechat-qr': 'channel:wechat-qr',
   'channel:wechat-success': 'channel:wechat-success',
   'channel:wechat-error': 'channel:wechat-error',
+  'channel:zalouser-qr': 'channel:zalouser-qr',
+  'channel:zalouser-success': 'channel:zalouser-success',
+  'channel:zalouser-error': 'channel:zalouser-error',
 };
 
 function getEventSource(): EventSource {

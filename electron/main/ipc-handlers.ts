@@ -42,6 +42,7 @@ import {
 } from '../utils/plugin-install';
 import { updateSkillConfig, getSkillConfig, getAllSkillConfigs } from '../utils/skill-config';
 import { whatsAppLoginManager } from '../utils/whatsapp-login';
+import { zaloUserLoginManager } from '../utils/zalouser-login';
 import { getProviderConfig } from '../utils/provider-registry';
 import { deviceOAuthManager, OAuthProviderType } from '../utils/device-oauth';
 import { browserOAuthManager, type BrowserOAuthProviderType } from '../utils/browser-oauth';
@@ -1667,6 +1668,24 @@ function registerWhatsAppHandlers(mainWindow: BrowserWindow): void {
     if (!mainWindow.isDestroyed()) {
       logger.error('whatsapp:login-error', error);
       mainWindow.webContents.send('channel:whatsapp-error', error);
+    }
+  });
+
+  zaloUserLoginManager.on('qr', (data) => {
+    if (!mainWindow.isDestroyed()) {
+      mainWindow.webContents.send('channel:zalouser-qr', data);
+    }
+  });
+
+  zaloUserLoginManager.on('success', (data) => {
+    if (!mainWindow.isDestroyed()) {
+      mainWindow.webContents.send('channel:zalouser-success', data);
+    }
+  });
+
+  zaloUserLoginManager.on('error', (error) => {
+    if (!mainWindow.isDestroyed()) {
+      mainWindow.webContents.send('channel:zalouser-error', error);
     }
   });
 }

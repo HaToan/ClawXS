@@ -21,7 +21,9 @@ export type ChannelType =
   | 'msteams'
   | 'googlechat'
   | 'mattermost'
-  | 'qqbot';
+  | 'qqbot'
+  | 'zalo'
+  | 'zalouser';
 
 /**
  * Channel connection status
@@ -96,6 +98,8 @@ export const CHANNEL_ICONS: Record<ChannelType, string> = {
   googlechat: '💭',
   mattermost: '💠',
   qqbot: '🐧',
+  zalo: '💬',
+  zalouser: '👤',
 };
 
 /**
@@ -117,6 +121,8 @@ export const CHANNEL_NAMES: Record<ChannelType, string> = {
   googlechat: 'Google Chat',
   mattermost: 'Mattermost',
   qqbot: 'QQ Bot',
+  zalo: 'Zalo',
+  zalouser: 'Zalo Personal',
 };
 
 /**
@@ -574,13 +580,51 @@ export const CHANNEL_META: Record<ChannelType, ChannelMeta> = {
     ],
     isPlugin: true,
   },
+  zalo: {
+    id: 'zalo',
+    name: 'Zalo',
+    icon: '💬',
+    description: 'channels:meta.zalo.description',
+    connectionType: 'token',
+    docsUrl: 'channels:meta.zalo.docsUrl',
+    configFields: [
+      {
+        key: 'accessToken',
+        label: 'channels:meta.zalo.fields.accessToken.label',
+        type: 'password',
+        placeholder: 'channels:meta.zalo.fields.accessToken.placeholder',
+        required: true,
+      },
+    ],
+    instructions: [
+      'channels:meta.zalo.instructions.0',
+      'channels:meta.zalo.instructions.1',
+      'channels:meta.zalo.instructions.2',
+    ],
+    isPlugin: true,
+  },
+  zalouser: {
+    id: 'zalouser',
+    name: 'Zalo Personal',
+    icon: '👤',
+    description: 'channels:meta.zalouser.description',
+    connectionType: 'qr',
+    docsUrl: 'channels:meta.zalouser.docsUrl',
+    configFields: [],
+    instructions: [
+      'channels:meta.zalouser.instructions.0',
+      'channels:meta.zalouser.instructions.1',
+      'channels:meta.zalouser.instructions.2',
+    ],
+    isPlugin: true,
+  },
 };
 
 /**
  * Get primary supported channels (non-plugin, commonly used)
  */
 export function getPrimaryChannels(): ChannelType[] {
-  return ['telegram', 'discord', 'whatsapp', 'wechat', 'dingtalk', 'feishu', 'wecom', 'qqbot'];
+  return ['telegram', 'discord', 'whatsapp', 'wechat', 'zalo', 'zalouser'];
 }
 
 /**

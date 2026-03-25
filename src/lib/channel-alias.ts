@@ -22,7 +22,7 @@ export function isWechatChannelType(channelType: string | null | undefined): boo
 }
 
 export function usesPluginManagedQrAccounts(channelType: string | null | undefined): boolean {
-  return isWechatChannelType(channelType);
+  return isWechatChannelType(channelType) || channelType === 'zalouser';
 }
 
 export function buildQrChannelEventName(channelType: string, event: QrChannelEvent): string {

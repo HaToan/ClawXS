@@ -48,6 +48,7 @@ import {
   waitForWeChatLoginSession,
 } from '../../utils/wechat-login';
 import { whatsAppLoginManager } from '../../utils/whatsapp-login';
+import { zaloUserLoginManager } from '../../utils/zalouser-login';
 import { proxyAwareFetch } from '../../utils/proxy-fetch';
 import {
   listDiscordDirectoryGroupsFromConfig,
@@ -185,6 +186,42 @@ async function awaitWeChatQrLogin(
   }
 }
 
+async function awaitZaloUserQrLogin(ctx: HostApiContext, accountId: string): Promise<void> {
+  return new Promise<void>((resolve) => {
+    const onQr = (data: unknown) => {
+      emitChannelEvent(ctx, 'zalouser', 'qr', data);
+    };
+    const cleanup = () => {
+      zaloUserLoginManager.off('qr', onQr);
+      zaloUserLoginManager.off('success', onSuccess);
+      zaloUserLoginManager.off('error', onError);
+    };
+    const onSuccess = (data: { accountId: string }) => {
+      cleanup();
+      const resolvedAccountId = data.accountId || accountId;
+      void (async () => {
+        try {
+          await saveChannelConfig('zalouser', { enabled: true }, resolvedAccountId);
+          await ensureScopedChannelBinding('zalouser', resolvedAccountId);
+          scheduleGatewayChannelSaveRefresh(ctx, 'zalouser', `zalouser:loginSuccess:${resolvedAccountId}`);
+        } catch (err) {
+          console.error('[zalouser] Failed to save channel config after QR login:', err);
+        }
+        emitChannelEvent(ctx, 'zalouser', 'success', data);
+        resolve();
+      })();
+    };
+    const onError = (error: unknown) => {
+      cleanup();
+      emitChannelEvent(ctx, 'zalouser', 'error', error);
+      resolve();
+    };
+    zaloUserLoginManager.on('qr', onQr);
+    zaloUserLoginManager.once('success', onSuccess);
+    zaloUserLoginManager.once('error', onError);
+  });
+}
+
 function scheduleGatewayChannelRestart(ctx: HostApiContext, reason: string): void {
   if (ctx.gatewayManager.getStatus().state === 'stopped') {
     return;
@@ -196,7 +233,7 @@ function scheduleGatewayChannelRestart(ctx: HostApiContext, reason: string): voi
 // Plugin-based channels require a full Gateway process restart to properly
 // initialize / tear-down plugin connections.  SIGUSR1 in-process reload is
 // not sufficient for channel plugins (see restartGatewayForAgentDeletion).
-const FORCE_RESTART_CHANNELS = new Set(['dingtalk', 'wecom', 'whatsapp', 'feishu', 'qqbot', OPENCLAW_WECHAT_CHANNEL_TYPE]);
+const FORCE_RESTART_CHANNELS = new Set(['dingtalk', 'wecom', 'whatsapp', 'feishu', 'qqbot', OPENCLAW_WECHAT_CHANNEL_TYPE, 'zalo', 'zalouser']);
 
 function scheduleGatewayChannelSaveRefresh(
   ctx: HostApiContext,
@@ -1168,6 +1205,29 @@ export async function handleChannelRoutes(
       if (sessionKey) {
         await cancelWeChatLoginSession(sessionKey);
       }
+      sendJson(res, 200, { success: true });
+    } catch (error) {
+      sendJson(res, 500, { success: false, error: String(error) });
+    }
+    return true;
+  }
+
+  if (url.pathname === '/api/channels/zalouser/start' && req.method === 'POST') {
+    try {
+      const body = await parseJsonBody<{ accountId?: string }>(req);
+      const accountId = body.accountId?.trim() || 'default';
+      await zaloUserLoginManager.startZaloQrLogin(accountId);
+      void awaitZaloUserQrLogin(ctx, accountId);
+      sendJson(res, 200, { success: true });
+    } catch (error) {
+      sendJson(res, 500, { success: false, error: String(error) });
+    }
+    return true;
+  }
+
+  if (url.pathname === '/api/channels/zalouser/cancel' && req.method === 'POST') {
+    try {
+      await zaloUserLoginManager.logoutZaloProfile();
       sendJson(res, 200, { success: true });
     } catch (error) {
       sendJson(res, 500, { success: false, error: String(error) });
